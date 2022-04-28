@@ -6,8 +6,9 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }))
-app.get("/",function(req, res){
-  res.send("T-T")
+app.get("/",async function(req, res){
+   var resul = await usuario.findAll(req.body);
+  res.json(resul);
 });
 
 app.post("/",function(req, res){
