@@ -16,6 +16,12 @@ app.post("/",function(req, res){
   res.json(resultado);
 });
 
+app.put("/:id", function(req, res){
+  var atualizar = usuario.update(req.body, {where: {id: req.params.id} });
+  res.json(atualizar)
+});
+
+app
 app.listen(3000, function(){
   console.log("Eba")
 });
