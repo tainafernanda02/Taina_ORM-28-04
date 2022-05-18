@@ -7,6 +7,16 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }))
+
+//usuário
+
+app.get("usuario/:id/empresa" , async function (req, res){
+  let resultado = await usuario.findByPk(req.params.id,{
+    incluid: 'empresa'
+  });
+  res.json(resultado.empresa);
+});
+
 app.get("/usuario",async function(req, res){
    var resul = await usuario.findAll(req.body);
   res.json(resul);
@@ -32,6 +42,14 @@ app.delete("/usuario/:id", function(req, res){
   res.json(deletar);
 });
 
+//empresa
+
+app.get("empresa/:id/usuario" , async function (req, res){
+  let resultado = await empresa.findByPk(req.params.id,{
+    incluid: 'usuario'
+  });
+  res.json(resultado.usuario);
+});
 
 app.get("/empresa",async function(req, res){
    var resul = await empresa.findAll(req.body);
